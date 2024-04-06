@@ -12,10 +12,61 @@ material = ExtResource("1_f854l")
 [node name="Ground" type="Node3D" parent="."]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+transform = Transform3D(2.64323, 0, 0, 0, 0.170613, 0, 0, 0, 2.58732, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
 shape = SubResource("BoxShape3D_fvqiu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground/StaticBody3D"]
+mesh = SubResource("BoxMesh_j3uvu")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Ground"]
+transform = Transform3D(1.56694, -0.0273594, 0, 0.300922, 0.142464, 0, 0, 0, 1, 1.01727, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D2"]
+shape = SubResource("BoxShape3D_fvqiu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground/StaticBody3D2"]
+mesh = SubResource("BoxMesh_j3uvu")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Ground"]
+transform = Transform3D(0.942961, -0.0244105, 0, 0.150987, 0.152451, 0, 0, 0, 0.455869, 1.01727, 0, 0.618569)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D3"]
+shape = SubResource("BoxShape3D_fvqiu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground/StaticBody3D3"]
+mesh = SubResource("BoxMesh_j3uvu")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="Ground"]
+transform = Transform3D(0.911331, -0.0235917, -0.117081, 0.150987, 0.152451, 0, 0.24218, -0.00626932, 0.440578, 1.01727, 0, 0.786591)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D4"]
+shape = SubResource("BoxShape3D_fvqiu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground/StaticBody3D4"]
+mesh = SubResource("BoxMesh_j3uvu")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="Ground"]
+transform = Transform3D(0.850577, -0.0127022, -0.203828, 0.100484, 0.15348, 0.0121667, 0.422366, -0.0109338, 0.407582, 1.01727, 0, 0.861395)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D5"]
+shape = SubResource("BoxShape3D_fvqiu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground/StaticBody3D5"]
+mesh = SubResource("BoxMesh_j3uvu")
+skeleton = NodePath("../..")
+
+[node name="suhgiuhsughdsyughdsnv" type="StaticBody3D" parent="Ground"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/suhgiuhsughdsyughdsnv"]
+shape = SubResource("BoxShape3D_fvqiu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground/suhgiuhsughdsyughdsnv"]
 mesh = SubResource("BoxMesh_j3uvu")
 skeleton = NodePath("../..")
