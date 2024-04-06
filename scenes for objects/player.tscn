@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvqvocl8sq51"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_6midp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dv14e"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_crqfr"]
+albedo_color = Color(0.784314, 0.568627, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0t67e"]
+material = SubResource("ORMMaterial3D_crqfr")
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.24769, 0)
+script = ExtResource("1_6midp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_dv14e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_0t67e")
+
+[node name="Its 1 from the numberjacks!!!!" type="Node3D" parent="."]

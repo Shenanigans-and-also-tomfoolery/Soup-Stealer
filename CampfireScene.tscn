@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxt72v18ws837"]
+
+[ext_resource type="Material" uid="uid://bjde2m7afv3ue" path="res://colours/dustybrownidk.tres" id="1_f854l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fvqiu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_j3uvu"]
+material = ExtResource("1_f854l")
+
+[node name="CampfireScene" type="Node3D"]
+
+[node name="Ground" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("BoxShape3D_fvqiu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground/StaticBody3D"]
+mesh = SubResource("BoxMesh_j3uvu")
+skeleton = NodePath("../..")
