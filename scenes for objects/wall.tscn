@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://6dx48x5xhhea"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ri8ee"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6sjg1"]
+lightmap_size_hint = Vector2i(14, 21)
+
+[node name="Wall" type="Node3D"]
+
+[node name="wall" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.380853, 0, 0, 0, 0.5, 0, 0, 0, 10.272, -0.0532765, 0.441546, 0.128161)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall"]
+shape = SubResource("BoxShape3D_ri8ee")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall"]
+mesh = SubResource("BoxMesh_6sjg1")

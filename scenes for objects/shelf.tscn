@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://c40r0os7b5j3x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mjdn0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_g7sme"]
+lightmap_size_hint = Vector2i(14, 21)
+
+[node name="Shelf" type="Node3D"]
+
+[node name="bottom bit" type="StaticBody3D" parent="."]
+transform = Transform3D(2.10836, 0, 0, 0, 0.0866242, 0, 0, 0, 0.497105, -0.0532765, -0.0630059, 0.128161)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bottom bit"]
+shape = SubResource("BoxShape3D_mjdn0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="bottom bit"]
+mesh = SubResource("BoxMesh_g7sme")
+
+[node name="top bit" type="StaticBody3D" parent="."]
+transform = Transform3D(2.10836, 0, 0, 0, 0.0866242, 0, 0, 0, 0.497105, -0.0532765, 2.24646, 0.128161)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="top bit"]
+shape = SubResource("BoxShape3D_mjdn0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="top bit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.21495, 0)
+mesh = SubResource("BoxMesh_g7sme")
+
+[node name="middle" type="StaticBody3D" parent="."]
+transform = Transform3D(2.10836, 0, 0, 0, 0.0866242, 0, 0, 0, 0.497105, -0.0532765, 1.15795, 0.128161)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="middle"]
+shape = SubResource("BoxShape3D_mjdn0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="middle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.21495, 0)
+mesh = SubResource("BoxMesh_g7sme")
+
+[node name="left side" type="StaticBody3D" parent="."]
+transform = Transform3D(-9.21595e-08, -0.0866242, 0, 2.10836, -3.78647e-09, 0, 0, 0, 0.497105, -1.06421, 1.04086, 0.128161)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="left side"]
+shape = SubResource("BoxShape3D_mjdn0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="left side"]
+mesh = SubResource("BoxMesh_g7sme")
+
+[node name="right side" type="StaticBody3D" parent="."]
+transform = Transform3D(-9.21595e-08, -0.0866242, 0, 2.10836, -3.78647e-09, 0, 0, 0, 0.497105, 0.958367, 1.04086, 0.128161)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="right side"]
+shape = SubResource("BoxShape3D_mjdn0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="right side"]
+mesh = SubResource("BoxMesh_g7sme")
