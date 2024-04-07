@@ -3,12 +3,14 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_6midp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dv14e"]
+radius = 0.519053
+height = 2.13854
 
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_crqfr"]
-albedo_color = Color(0.784314, 0.568627, 1, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r7v5a"]
+albedo_color = Color(0.960784, 0.45098, 1, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0t67e"]
-material = SubResource("ORMMaterial3D_crqfr")
+material = SubResource("StandardMaterial3D_r7v5a")
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.24769, 0)
@@ -21,3 +23,6 @@ shape = SubResource("CapsuleShape3D_dv14e")
 mesh = SubResource("CapsuleMesh_0t67e")
 
 [node name="Its 1 from the numberjacks!!!!" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.521281, -0.76379, 0.380646, 0.00312589, 0.447748, 0.894154, -0.853379, -0.464916, 0.23579, 9.29057, 14.3095, 6.506)
