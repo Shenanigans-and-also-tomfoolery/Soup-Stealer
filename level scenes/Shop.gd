@@ -23,7 +23,7 @@ func _on_area_3d_body_exited(body):
 	
 func change_roof_opacity(opacity):
 	#get all the nodes that make up the roof and set the opacity to them
-	var roof_parts = ["Roof/Back Wall2/wall/MeshInstance3D", "snalalp", "Shop/Roof/floor2/wall/MeshInstance3D", "Roof/Left wall2/wall/MeshInstance3D"]
+	var roof_parts = ["Roof/Back Wall2/wall/MeshInstance3D", "snalalp", "Roof/floor2/wall/MeshInstance3D", "Roof/Left wall2/wall/MeshInstance3D"]
 	for part_path in roof_parts:
 		var part = get_node_or_null(part_path)
 		if part and part.mesh and part.mesh.surface_get_material(0):

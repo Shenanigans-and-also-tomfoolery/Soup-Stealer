@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://6dx48x5xhhea" path="res://scenes for objects/wall.tscn" id="1_hu0go"]
 [ext_resource type="PackedScene" uid="uid://c40r0os7b5j3x" path="res://scenes for objects/shelf.tscn" id="2_nes41"]
 [ext_resource type="PackedScene" uid="uid://dvqvocl8sq51" path="res://scenes for objects/player.tscn" id="3_n2nfb"]
-[ext_resource type="PackedScene" uid="uid://cr8s2vucjnc2v" path="res://scenes for objects/road.tscn" id="5_63gqu"]
+[ext_resource type="PackedScene" uid="uid://d34uelyjjtxqq" path="res://scenes for objects/road.tscn" id="5_63gqu"]
 [ext_resource type="Environment" uid="uid://ojfh4uh8h184" path="res://fancyschmancy stuff/lightingstuff.tres" id="5_figy0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ri8ee"]
