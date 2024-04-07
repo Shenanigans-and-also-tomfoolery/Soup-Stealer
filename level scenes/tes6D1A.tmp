@@ -4,11 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://6dx48x5xhhea" path="res://scenes for objects/wall.tscn" id="1_hu0go"]
 [ext_resource type="PackedScene" uid="uid://c40r0os7b5j3x" path="res://scenes for objects/shelf.tscn" id="2_nes41"]
 [ext_resource type="PackedScene" uid="uid://dvqvocl8sq51" path="res://scenes for objects/player.tscn" id="3_n2nfb"]
-[ext_resource type="PackedScene" uid="uid://d34uelyjjtxqq" path="res://scenes for objects/road.tscn" id="5_63gqu"]
+[ext_resource type="PackedScene" uid="uid://cr8s2vucjnc2v" path="res://scenes for objects/road.tscn" id="5_63gqu"]
 [ext_resource type="Environment" uid="uid://ojfh4uh8h184" path="res://fancyschmancy stuff/lightingstuff.tres" id="5_figy0"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_g4j87"]
-size = Vector3(6.81713, 2.54944, 8.00702)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ri8ee"]
 
@@ -27,35 +24,28 @@ albedo_color = Color(0.458824, 0.760784, 0.290196, 1)
 lightmap_size_hint = Vector2i(14, 21)
 material = SubResource("StandardMaterial3D_xq3dg")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4j87"]
+
 [node name="testWorld" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94845, -0.529846, -0.622681)
-
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.34682, 1.92778, -23.1854)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 2.24341, 0.781203, -3.70972)
-shape = SubResource("BoxShape3D_g4j87")
 
 [node name="Shop" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00965881, -0.0699084, 1.21292)
 script = ExtResource("1_6migh")
 
 [node name="Left wall" parent="Shop" instance=ExtResource("1_hu0go")]
-transform = Transform3D(1.74, 0, 0, 0, 16.345, 0, 0, 0, 4.65, 76.8787, -5.46526, -35.583)
+transform = Transform3D(0.875, 0, 0, 0, 8.22463, 0, 0, 0, 2.34, -10.0583, -1.69003, -22.2777)
 
 [node name="Right Wall" parent="Shop" instance=ExtResource("1_hu0go")]
-transform = Transform3D(1.74, 0, 0, 0, 32.718, 0, 0, 0, 4.653, -25.789, 11.2526, 85.3235)
+transform = Transform3D(0.875, 0, 0, 0, 8.22463, 0, 0, 0, 2.34, 10.1599, -1.69003, -22.2777)
 
 [node name="Back Wall" parent="Shop" instance=ExtResource("1_hu0go")]
-transform = Transform3D(-3.82475e-08, 0, 1.98555, 0, 8.22463, 0, -0.875, 0, -8.67913e-08, 44.9808, 0.967013, -48.9282)
+transform = Transform3D(-3.82475e-08, 0, 1.98555, 0, 8.22463, 0, -0.875, 0, -8.67913e-08, -0.224832, -1.69003, -33.8572)
 
 [node name="floor" parent="Shop" instance=ExtResource("1_hu0go")]
-transform = Transform3D(107.005, 0, 0, 0, 0.253358, 0, 0, 0, 4.67958, 9.23773, 0.475324, -35.6745)
+transform = Transform3D(53.5023, 0, 0, 0, 0.253358, 0, 0, 0, 2.33979, 2.72964, 0.0117159, -22.2615)
 
 [node name="Roof" type="Node3D" parent="Shop"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 7.9727, 0)
-visible = false
 
 [node name="Left wall2" type="Node3D" parent="Shop/Roof"]
 transform = Transform3D(0.875, 0, 0, 0, 8.22463, 0, 0, 0, 2.34, -10.0583, -1.69003, -22.2777)
@@ -110,10 +100,11 @@ mesh = SubResource("BoxMesh_6sjg1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00543046, 0.350739, -0.0191469)
 
 [node name="Player" parent="." instance=ExtResource("3_n2nfb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.40824, 2.24769, 31.6176)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.40824, 2.24769, 9.3114)
 
 [node name="Camera3D2" type="Camera3D" parent="Player"]
-transform = Transform3D(0.798026, -0.539953, 0.267592, 0.00312591, 0.447748, 0.894154, -0.602615, -0.712722, 0.359002, 5.5397, 14.3095, 6.506)
+transform = Transform3D(-0.866426, 0.447665, -0.221139, 0.00312586, 0.447748, 0.894154, 0.499296, 0.774027, -0.38934, 15.6331, 20.9262, 26.6673)
+fov = 1.0
 
 [node name="Grass" type="StaticBody3D" parent="."]
 transform = Transform3D(33.7324, 0, 0, 0, 0.48, 0, 0, 0, 34.5416, -0.0532765, -0.0630059, 25.928)
@@ -122,7 +113,6 @@ transform = Transform3D(33.7324, 0, 0, 0, 0.48, 0, 0, 0, 34.5416, -0.0532765, -0
 shape = SubResource("BoxShape3D_41xwl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Grass"]
-transform = Transform3D(2, 0, 0, 0, 0.999999, 0, 0, 0, 2, -0.0186598, -0.394788, 0.0300285)
 mesh = SubResource("BoxMesh_mxr68")
 
 [node name="Grass2" type="StaticBody3D" parent="."]
@@ -132,7 +122,6 @@ transform = Transform3D(33.7324, 0, 0, 0, 0.48, 0, 0, 0, 34.5416, -0.0532765, -0
 shape = SubResource("BoxShape3D_41xwl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Grass2"]
-transform = Transform3D(1.99999, 0, 0, 0, 0.999998, 0, 0, 0, 1.99999, -0.0251793, -0.203377, -0.473275)
 mesh = SubResource("BoxMesh_mxr68")
 
 [node name="sun" type="DirectionalLight3D" parent="."]
@@ -148,7 +137,13 @@ directional_shadow_mode = 0
 environment = ExtResource("5_figy0")
 
 [node name="Road" parent="." instance=ExtResource("5_63gqu")]
-transform = Transform3D(-3.4322e-07, 0, 22.3804, 0, 1, 0, -3.92598, 0, -4.89138e-07, -0.961308, 0, 0)
+transform = Transform3D(-1.7161e-07, 0, 11.1902, 0, 1, 0, -3.92598, 0, -4.89138e-07, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(26.786, 0, 0, 0, 3.88619, 0, 0, 0, 20.0197, -3.34682, 1.92778, -21.0532)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_g4j87")
 
 [connection signal="body_entered" from="Area3D" to="Shop" method="_on_player_entered"]
 [connection signal="body_exited" from="Area3D" to="Shop" method="_on_area_3d_body_exited"]
