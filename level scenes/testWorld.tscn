@@ -1,59 +1,150 @@
-[gd_scene load_steps=8 format=3 uid="uid://b0vxp45cbky52"]
+[gd_scene load_steps=14 format=3 uid="uid://b0vxp45cbky52"]
 
+[ext_resource type="Script" path="res://level scenes/Shop.gd" id="1_6migh"]
 [ext_resource type="PackedScene" uid="uid://6dx48x5xhhea" path="res://scenes for objects/wall.tscn" id="1_hu0go"]
 [ext_resource type="PackedScene" uid="uid://c40r0os7b5j3x" path="res://scenes for objects/shelf.tscn" id="2_nes41"]
 [ext_resource type="PackedScene" uid="uid://dvqvocl8sq51" path="res://scenes for objects/player.tscn" id="3_n2nfb"]
-[ext_resource type="Material" uid="uid://brisbuipqoa8k" path="res://colours/green.tres" id="4_86gkx"]
+[ext_resource type="PackedScene" uid="uid://d34uelyjjtxqq" path="res://scenes for objects/road.tscn" id="5_63gqu"]
 [ext_resource type="Environment" uid="uid://ojfh4uh8h184" path="res://fancyschmancy stuff/lightingstuff.tres" id="5_figy0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ri8ee"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbjjy"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_6sjg1"]
 lightmap_size_hint = Vector2i(14, 21)
-material = ExtResource("4_86gkx")
+material = SubResource("StandardMaterial3D_jbjjy")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_41xwl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xq3dg"]
+albedo_color = Color(0.458824, 0.760784, 0.290196, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mxr68"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_xq3dg")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4j87"]
 
 [node name="testWorld" type="Node3D"]
 
 [node name="Shop" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00965881, -0.0699084, 1.21292)
+script = ExtResource("1_6migh")
 
 [node name="Left wall" parent="Shop" instance=ExtResource("1_hu0go")]
-transform = Transform3D(0.875, 0, 0, 0, 4.808, 0, 0, 0, 2.34, -10.0583, -0.740683, -22.2777)
+transform = Transform3D(0.875, 0, 0, 0, 8.22463, 0, 0, 0, 2.34, -10.0583, -1.69003, -22.2777)
 
 [node name="Right Wall" parent="Shop" instance=ExtResource("1_hu0go")]
-transform = Transform3D(0.875, 0, 0, 0, 4.808, 0, 0, 0, 2.34, 10.1599, -0.740683, -22.2777)
+transform = Transform3D(0.875, 0, 0, 0, 8.22463, 0, 0, 0, 2.34, 10.1599, -1.69003, -22.2777)
 
 [node name="Back Wall" parent="Shop" instance=ExtResource("1_hu0go")]
-transform = Transform3D(-3.82475e-08, 0, 1.98555, 0, 4.808, 0, -0.875, 0, -8.67913e-08, -0.224832, -0.740683, -33.8572)
+transform = Transform3D(-3.82475e-08, 0, 1.98555, 0, 8.22463, 0, -0.875, 0, -8.67913e-08, -0.224832, -1.69003, -33.8572)
 
 [node name="floor" parent="Shop" instance=ExtResource("1_hu0go")]
 transform = Transform3D(53.5023, 0, 0, 0, 0.253358, 0, 0, 0, 2.33979, 2.72964, 0.0117159, -22.2615)
+
+[node name="Roof" type="Node3D" parent="Shop"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 7.9727, 0)
+
+[node name="Left wall2" type="Node3D" parent="Shop/Roof"]
+transform = Transform3D(0.875, 0, 0, 0, 8.22463, 0, 0, 0, 2.34, -10.0583, -1.69003, -22.2777)
+
+[node name="wall" type="StaticBody3D" parent="Shop/Roof/Left wall2"]
+transform = Transform3D(-0.380853, 0, 0, 0, 0.5, 0, 0, 0, 10.272, -0.0532765, 0.441546, 0.128161)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shop/Roof/Left wall2/wall"]
+shape = SubResource("BoxShape3D_ri8ee")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Shop/Roof/Left wall2/wall"]
+mesh = SubResource("BoxMesh_6sjg1")
+
+[node name="Right Wall2" type="Node3D" parent="Shop/Roof"]
+transform = Transform3D(0.875, 0, 0, 0, 8.22463, 0, 0, 0, 2.34, 10.1599, -1.69003, -22.2777)
+
+[node name="wall" type="StaticBody3D" parent="Shop/Roof/Right Wall2"]
+transform = Transform3D(-0.380853, 0, 0, 0, 0.5, 0, 0, 0, 10.272, -0.0532765, 0.441546, 0.128161)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shop/Roof/Right Wall2/wall"]
+shape = SubResource("BoxShape3D_ri8ee")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Shop/Roof/Right Wall2/wall"]
+mesh = SubResource("BoxMesh_6sjg1")
+
+[node name="Back Wall2" type="Node3D" parent="Shop/Roof"]
+transform = Transform3D(-3.82475e-08, 0, 1.98555, 0, 8.22463, 0, -0.875, 0, -8.67913e-08, -0.224832, -1.69003, -33.8572)
+
+[node name="wall" type="StaticBody3D" parent="Shop/Roof/Back Wall2"]
+transform = Transform3D(-0.380853, 0, 0, 0, 0.5, 0, 0, 0, 10.272, -0.0532765, 0.441546, 0.128161)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shop/Roof/Back Wall2/wall"]
+shape = SubResource("BoxShape3D_ri8ee")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Shop/Roof/Back Wall2/wall"]
+mesh = SubResource("BoxMesh_6sjg1")
+
+[node name="floor2" type="Node3D" parent="Shop/Roof"]
+transform = Transform3D(53.5023, 0, 0, 0, 0.253358, 0, 0, 0, 2.33979, 2.72964, 0.0117159, -22.2615)
+
+[node name="wall" type="StaticBody3D" parent="Shop/Roof/floor2"]
+transform = Transform3D(-0.380853, 0, 0, 0, 0.5, 0, 0, 0, 10.272, -0.0532765, 0.441546, 0.128161)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shop/Roof/floor2/wall"]
+shape = SubResource("BoxShape3D_ri8ee")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Shop/Roof/floor2/wall"]
+unique_name_in_owner = true
+mesh = SubResource("BoxMesh_6sjg1")
 
 [node name="Shelf" parent="." instance=ExtResource("2_nes41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00543046, 0.350739, -0.0191469)
 
 [node name="Player" parent="." instance=ExtResource("3_n2nfb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.40824, 2.24769, 6.3114)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.40824, 2.24769, 9.3114)
 
-[node name="Camera3D" type="Camera3D" parent="Player"]
+[node name="Camera3D2" type="Camera3D" parent="Player"]
 transform = Transform3D(0.798026, -0.539953, 0.267592, 0.00312591, 0.447748, 0.894154, -0.602615, -0.712722, 0.359002, 5.5397, 14.3095, 6.506)
 
-[node name="Ground" type="StaticBody3D" parent="."]
-transform = Transform3D(20.466, 0, 0, 0, 0.48, 0, 0, 0, 21, -0.0532765, -0.0630059, 0.128161)
+[node name="Grass" type="StaticBody3D" parent="."]
+transform = Transform3D(33.7324, 0, 0, 0, 0.48, 0, 0, 0, 34.5416, -0.0532765, -0.0630059, 25.928)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-shape = SubResource("BoxShape3D_ri8ee")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grass"]
+shape = SubResource("BoxShape3D_41xwl")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("BoxMesh_6sjg1")
+mesh = SubResource("BoxMesh_mxr68")
+
+[node name="Grass2" type="StaticBody3D" parent="."]
+transform = Transform3D(33.7324, 0, 0, 0, 0.48, 0, 0, 0, 34.5416, -0.0532765, -0.17892, -25.759)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grass2"]
+shape = SubResource("BoxShape3D_41xwl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grass2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_mxr68")
 
 [node name="sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.788902, -0.206757, 0.578693, 0, 0.9417, 0.336454, -0.614519, -0.265429, 0.742909, 0, 8.13749, 4.48024)
 light_color = Color(1, 0.894118, 0.556863, 1)
-light_energy = 2.808
+light_angular_distance = 0.5
 shadow_enabled = true
-shadow_opacity = 0.49
+shadow_opacity = 0.84
 shadow_blur = 2.424
+directional_shadow_mode = 0
 
 [node name="fancyschmancy lighting" type="WorldEnvironment" parent="."]
 environment = ExtResource("5_figy0")
+
+[node name="Road" parent="." instance=ExtResource("5_63gqu")]
+transform = Transform3D(-1.7161e-07, 0, 11.1902, 0, 1, 0, -3.92598, 0, -4.89138e-07, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(26.786, 0, 0, 0, 3.88619, 0, 0, 0, 20.0197, -3.34682, 1.92778, -21.0532)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_g4j87")
+
+[connection signal="body_entered" from="Area3D" to="Shop" method="_on_player_entered"]
+[connection signal="body_exited" from="Area3D" to="Shop" method="_on_area_3d_body_exited"]

@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://6dx48x5xhhea"]
+[gd_scene load_steps=4 format=3 uid="uid://6dx48x5xhhea"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ri8ee"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbjjy"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_6sjg1"]
 lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_jbjjy")
 
 [node name="Wall" type="Node3D"]
 
