@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://d34uelyjjtxqq" path="res://scenes for objects/road.tscn" id="5_63gqu"]
 [ext_resource type="Environment" uid="uid://ojfh4uh8h184" path="res://fancyschmancy stuff/lightingstuff.tres" id="5_figy0"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4j87"]
+size = Vector3(8.9953, 2.54944, 8.43201)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ri8ee"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbjjy"]
@@ -24,9 +27,14 @@ albedo_color = Color(0.458824, 0.760784, 0.290196, 1)
 lightmap_size_hint = Vector2i(14, 21)
 material = SubResource("StandardMaterial3D_xq3dg")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_g4j87"]
-
 [node name="testWorld" type="Node3D"]
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.34682, 1.92778, -23.1854)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0329597, 0.664382, 0.590881)
+shape = SubResource("BoxShape3D_g4j87")
 
 [node name="Shop" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00965881, -0.0699084, 1.21292)
@@ -46,6 +54,7 @@ transform = Transform3D(53.5023, 0, 0, 0, 0.253358, 0, 0, 0, 2.33979, 2.72964, 0
 
 [node name="Roof" type="Node3D" parent="Shop"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 7.9727, 0)
+visible = false
 
 [node name="Left wall2" type="Node3D" parent="Shop/Roof"]
 transform = Transform3D(0.875, 0, 0, 0, 8.22463, 0, 0, 0, 2.34, -10.0583, -1.69003, -22.2777)
@@ -100,7 +109,7 @@ mesh = SubResource("BoxMesh_6sjg1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00543046, 0.350739, -0.0191469)
 
 [node name="Player" parent="." instance=ExtResource("3_n2nfb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.40824, 2.24769, 9.3114)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.40824, 2.24769, 31.6176)
 
 [node name="Camera3D2" type="Camera3D" parent="Player"]
 transform = Transform3D(0.798026, -0.539953, 0.267592, 0.00312591, 0.447748, 0.894154, -0.602615, -0.712722, 0.359002, 5.5397, 14.3095, 6.506)
@@ -139,12 +148,6 @@ environment = ExtResource("5_figy0")
 
 [node name="Road" parent="." instance=ExtResource("5_63gqu")]
 transform = Transform3D(-1.7161e-07, 0, 11.1902, 0, 1, 0, -3.92598, 0, -4.89138e-07, 0, 0, 0)
-
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(26.786, 0, 0, 0, 3.88619, 0, 0, 0, 20.0197, -3.34682, 1.92778, -21.0532)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("BoxShape3D_g4j87")
 
 [connection signal="body_entered" from="Area3D" to="Shop" method="_on_player_entered"]
 [connection signal="body_exited" from="Area3D" to="Shop" method="_on_area_3d_body_exited"]
