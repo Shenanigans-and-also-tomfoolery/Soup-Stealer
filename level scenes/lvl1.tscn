@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://br2o06s0i6nfq"]
+
+[ext_resource type="PackedScene" uid="uid://6dx48x5xhhea" path="res://scenes for objects/wall.tscn" id="1_v8pd1"]
+[ext_resource type="PackedScene" uid="uid://dvqvocl8sq51" path="res://scenes for objects/player.tscn" id="2_ruulc"]
+[ext_resource type="PackedScene" uid="uid://dki4ud5iwxa2c" path="res://scenes for objects/grass.tscn" id="3_ojxq4"]
+
+[node name="Lvl1" type="Node3D"]
+
+[node name="Left wall" parent="." instance=ExtResource("1_v8pd1")]
+transform = Transform3D(0.875, 0, 0, 0, 8.22463, 0, 0, 0, 2.34, -10.0583, -1.69003, -22.2777)
+
+[node name="Right Wall" parent="." instance=ExtResource("1_v8pd1")]
+transform = Transform3D(0.875, 0, 0, 0, 8.22463, 0, 0, 0, 2.34, 10.1599, -1.69003, -22.2777)
+
+[node name="Back Wall" parent="." instance=ExtResource("1_v8pd1")]
+transform = Transform3D(-3.82475e-08, 0, 1.98555, 0, 8.22463, 0, -0.875, 0, -8.67913e-08, -0.224832, -1.69003, -33.8572)
+
+[node name="floor" parent="." instance=ExtResource("1_v8pd1")]
+transform = Transform3D(53.5023, 0, 0, 0, 0.253358, 0, 0, 0, 2.33979, 2.72964, 0.0117159, -22.2615)
+
+[node name="beanos" parent="." instance=ExtResource("2_ruulc")]
+
+[node name="Grass" parent="." instance=ExtResource("3_ojxq4")]
+transform = Transform3D(37.4586, 0, 0, 0, 0.252455, 0, 0, 0, 34.2973, 0, 0, 0)

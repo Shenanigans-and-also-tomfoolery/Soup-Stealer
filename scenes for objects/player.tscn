@@ -25,4 +25,4 @@ mesh = SubResource("CapsuleMesh_0t67e")
 [node name="Its 1 from the numberjacks!!!!" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.753781, 0.657125, 0, -0.657125, 0.753781, -0.122995, 7.67368, 6.506)
+transform = Transform3D(1, 0, 0, 0, 0.654517, 0.756048, 0, -0.756048, 0.654517, -0.166022, 8.32791, 6.506)
