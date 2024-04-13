@@ -19,6 +19,7 @@ lightmap_size_hint = Vector2i(14, 21)
 material = SubResource("StandardMaterial3D_jbjjy")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_41xwl"]
+size = Vector3(1.99487, 1, 1.53235)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xq3dg"]
 albedo_color = Color(0.458824, 0.760784, 0.290196, 1)
@@ -42,20 +43,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00965881, -0.0699084, 1.21
 script = ExtResource("1_6migh")
 
 [node name="Left wall" parent="Shop" instance=ExtResource("1_hu0go")]
-transform = Transform3D(1.74, 0, 0, 0, 16.345, 0, 0, 0, 4.65, 76.8787, -5.46526, -35.583)
+transform = Transform3D(1.74, 0, 0, 0, 29.908, 0, 0, 0, 4.65, 23.8958, -8.7353, -35.3291)
 
 [node name="Right Wall" parent="Shop" instance=ExtResource("1_hu0go")]
-transform = Transform3D(1.74, 0, 0, 0, 32.718, 0, 0, 0, 4.653, -25.789, 11.2526, 85.3235)
+transform = Transform3D(1.74, 0, 0, 0, 32.718, 0, 0, 0, 4.653, -16.742, -9.27112, -35.3698)
 
 [node name="Back Wall" parent="Shop" instance=ExtResource("1_hu0go")]
-transform = Transform3D(-3.82475e-08, 0, 1.98555, 0, 8.22463, 0, -0.875, 0, -8.67913e-08, 44.9808, 0.967013, -48.9282)
+transform = Transform3D(-3.82475e-08, 0, 3.93211, 0, 31.1046, 0, -0.875, 0, -1.71878e-07, 3.01173, -8.89526, -58.5901)
 
 [node name="floor" parent="Shop" instance=ExtResource("1_hu0go")]
-transform = Transform3D(107.005, 0, 0, 0, 0.253358, 0, 0, 0, 4.67958, 9.23773, 0.475324, -35.6745)
+transform = Transform3D(107.005, 0, 0, 0, 0.148648, 0, 0, 0, 4.67958, 9.23773, -0.0464894, -35.5003)
 
 [node name="Roof" type="Node3D" parent="Shop"]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 7.9727, 0)
-visible = false
+transform = Transform3D(-2, 3.01992e-07, 0, -3.01992e-07, -2, 0, 0, 0, 2, 3.47112, 13.086, 9.04385)
 
 [node name="Left wall2" type="Node3D" parent="Shop/Roof"]
 transform = Transform3D(0.875, 0, 0, 0, 8.22463, 0, 0, 0, 2.34, -10.0583, -1.69003, -22.2777)
@@ -112,13 +112,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00543046, 0.350739, -0.0191
 [node name="beanos" parent="." instance=ExtResource("3_n2nfb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.40824, 2.24769, 31.6176)
 
-[node name="Camera3D2" type="Camera3D" parent="beanos"]
-transform = Transform3D(0.798026, -0.539953, 0.267592, 0.00312591, 0.447748, 0.894154, -0.602615, -0.712722, 0.359002, 5.5397, 14.3095, 6.506)
-
 [node name="Grass" type="StaticBody3D" parent="."]
-transform = Transform3D(33.7324, 0, 0, 0, 0.48, 0, 0, 0, 34.5416, -0.0532765, -0.0630059, 25.928)
+transform = Transform3D(33, 0, 0, 0, 0.48, 0, 0, 0, 33, -0.0532765, -0.115916, 25.928)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Grass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0194356, -0.223625, 0.265024)
 shape = SubResource("BoxShape3D_41xwl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Grass"]
