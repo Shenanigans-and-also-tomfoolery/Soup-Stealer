@@ -10,7 +10,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(inShop)
+	#print(inShop)
 	if inShop == false: #if we're in the shop, hide the roof
 		get_node("Roof").visible = true
 	else:
@@ -19,6 +19,8 @@ func _process(delta):
 
 func _on_player_entered(CharacterBody3D):
 	inShop = true
+	get_node("MainFollow Camera").set_priority(0)
+	get_node("Top View cam").set_priority(0)
 	print("Player entered!")
 	
 	#change_roof_opacity(0.7)

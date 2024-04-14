@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b0vxp45cbky52"]
+[gd_scene load_steps=17 format=3 uid="uid://b0vxp45cbky52"]
 
 [ext_resource type="Script" path="res://level scenes/Shop.gd" id="1_6migh"]
 [ext_resource type="PackedScene" uid="uid://6dx48x5xhhea" path="res://scenes for objects/wall.tscn" id="1_hu0go"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dvqvocl8sq51" path="res://scenes for objects/player.tscn" id="3_n2nfb"]
 [ext_resource type="PackedScene" uid="uid://d34uelyjjtxqq" path="res://scenes for objects/road.tscn" id="5_63gqu"]
 [ext_resource type="Environment" uid="uid://ojfh4uh8h184" path="res://fancyschmancy stuff/lightingstuff.tres" id="5_figy0"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="7_20cah"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="8_8s4gp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g4j87"]
 size = Vector3(6.81713, 2.54944, 8.00702)
@@ -28,8 +30,14 @@ albedo_color = Color(0.458824, 0.760784, 0.290196, 1)
 lightmap_size_hint = Vector2i(14, 21)
 material = SubResource("StandardMaterial3D_xq3dg")
 
+[sub_resource type="Resource" id="Resource_tn8q5"]
+script = ExtResource("8_8s4gp")
+duration = 1.0
+transition = 4
+ease = 2
+
 [node name="testWorld" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94845, -0.529846, -0.622681)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94845, -0.529845, -0.622681)
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.34682, 1.92778, -23.1854)
@@ -113,7 +121,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00543046, 0.350739, -0.0191
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.40824, 2.24769, 31.6176)
 
 [node name="Grass" type="StaticBody3D" parent="."]
-transform = Transform3D(33, 0, 0, 0, 0.48, 0, 0, 0, 33, -0.0532765, -0.115916, 25.928)
+transform = Transform3D(33, 0, 0, 0, 0.48, 0, 0, 0, 33, -0.0532765, -0.115915, 25.928)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0194356, -0.223625, 0.265024)
@@ -147,6 +155,37 @@ environment = ExtResource("5_figy0")
 
 [node name="Road" parent="." instance=ExtResource("5_63gqu")]
 transform = Transform3D(-3.4322e-07, 0, 22.3804, 0, 1, 0, -3.92598, 0, -4.89138e-07, -0.961308, 0, 0)
+
+[node name="MainFollow Camera" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.796889, 0.604126, 0, -0.604126, 0.796889, 6.40824, 6.85182, 36.4145)
+script = ExtResource("7_20cah")
+priority_override = false
+priority = 0
+follow_mode = 6
+follow_target = NodePath("../beanos")
+follow_parameters/spring_arm/spring_length = 1.0
+follow_parameters/spring_arm/collision_mask = 1
+follow_parameters/spring_arm/shape = null
+follow_parameters/spring_arm/margin = 0.01
+follow_parameters/target_offset = Vector3(0, 4, 4)
+follow_parameters/damping = true
+follow_parameters/damping_value = 4.05
+look_at_mode = 0
+tween_parameters = SubResource("Resource_tn8q5")
+tween_on_load = true
+inactive_update_mode = 0
+camera_3D_resource = null
+
+[node name="Top View cam" type="Node3D" parent="."]
+script = ExtResource("7_20cah")
+priority_override = false
+priority = 0
+follow_mode = 0
+look_at_mode = 0
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+camera_3D_resource = null
 
 [connection signal="body_entered" from="Area3D" to="Shop" method="_on_player_entered"]
 [connection signal="body_exited" from="Area3D" to="Shop" method="_on_area_3d_body_exited"]

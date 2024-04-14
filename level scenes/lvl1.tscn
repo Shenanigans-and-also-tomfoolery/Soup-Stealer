@@ -1,10 +1,68 @@
-[gd_scene load_steps=4 format=3 uid="uid://br2o06s0i6nfq"]
+[gd_scene load_steps=15 format=3 uid="uid://br2o06s0i6nfq"]
 
 [ext_resource type="PackedScene" uid="uid://6dx48x5xhhea" path="res://scenes for objects/wall.tscn" id="1_v8pd1"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="1_wmqxw"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_osfkk"]
 [ext_resource type="PackedScene" uid="uid://dvqvocl8sq51" path="res://scenes for objects/player.tscn" id="2_ruulc"]
 [ext_resource type="PackedScene" uid="uid://dki4ud5iwxa2c" path="res://scenes for objects/grass.tscn" id="3_ojxq4"]
+[ext_resource type="PackedScene" uid="uid://q3k2n7656tjn" path="res://scenes for objects/trees/tree_pine_a.tscn" id="6_lv4xk"]
+[ext_resource type="PackedScene" uid="uid://c7yq6d4n0f15f" path="res://scenes for objects/trees/tree_pine_round_d.tscn" id="7_ufiu8"]
+[ext_resource type="PackedScene" uid="uid://cpmxatqgv06b4" path="res://scenes for objects/trees/tree_pine_small_a.tscn" id="8_bm41k"]
+[ext_resource type="PackedScene" uid="uid://c80fqysmrgdh4" path="res://scenes for objects/trees/tree_pine_tall_b.tscn" id="9_01alu"]
+
+[sub_resource type="Resource" id="Resource_vjjhi"]
+script = ExtResource("2_osfkk")
+duration = 1.0
+transition = 4
+ease = 2
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rf7dj"]
+sky_top_color = Color(0.615686, 0.717647, 0.909804, 1)
+sky_horizon_color = Color(0.803922, 0.858824, 0.929412, 1)
+
+[sub_resource type="Sky" id="Sky_cly0e"]
+sky_material = SubResource("ProceduralSkyMaterial_rf7dj")
+
+[sub_resource type="Environment" id="Environment_88qq8"]
+background_mode = 2
+sky = SubResource("Sky_cly0e")
+sky_custom_fov = 134.5
+tonemap_mode = 3
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.807843, 0.827451, 0.858824, 1)
+fog_sun_scatter = 0.38
+fog_density = 0.0185
+fog_aerial_perspective = 0.663
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0396
+volumetric_fog_anisotropy = 0.02
+volumetric_fog_length = 247.74
+volumetric_fog_sky_affect = 0.139
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v35e6"]
 
 [node name="Lvl1" type="Node3D"]
+
+[node name="MainFollow Camera" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.796889, 0.604126, 0, -0.604126, 0.796889, 0, 6.85182, 4.79689)
+script = ExtResource("1_wmqxw")
+priority_override = false
+priority = 0
+follow_mode = 6
+follow_target = NodePath("../beanos")
+follow_parameters/spring_arm/spring_length = 1.0
+follow_parameters/spring_arm/collision_mask = 1
+follow_parameters/spring_arm/shape = null
+follow_parameters/spring_arm/margin = 0.01
+follow_parameters/target_offset = Vector3(0, 4, 4)
+follow_parameters/damping = true
+follow_parameters/damping_value = 4.05
+look_at_mode = 0
+tween_parameters = SubResource("Resource_vjjhi")
+tween_on_load = false
+inactive_update_mode = 0
+camera_3D_resource = null
 
 [node name="Left wall" parent="." instance=ExtResource("1_v8pd1")]
 transform = Transform3D(0.875, 0, 0, 0, 8.22463, 0, 0, 0, 2.34, -10.0583, -1.69003, -22.2777)
@@ -21,4 +79,781 @@ transform = Transform3D(53.5023, 0, 0, 0, 0.253358, 0, 0, 0, 2.33979, 2.72964, 0
 [node name="beanos" parent="." instance=ExtResource("2_ruulc")]
 
 [node name="Grass" parent="." instance=ExtResource("3_ojxq4")]
-transform = Transform3D(37.4586, 0, 0, 0, 0.252455, 0, 0, 0, 34.2973, 0, 0, 0)
+transform = Transform3D(64.0165, 0, 0, 0, 0.252455, 0, 0, 0, 100.462, 0, 0, 8.48311)
+
+[node name="Trees" type="Node3D" parent="."]
+
+[node name="tree_pine_A" parent="Trees" instance=ExtResource("6_lv4xk")]
+
+[node name="tree_pine_round_D" parent="Trees" instance=ExtResource("7_ufiu8")]
+
+[node name="tree_pine_small_A" parent="Trees" instance=ExtResource("8_bm41k")]
+
+[node name="Tree Border" type="Node3D" parent="Trees"]
+
+[node name="tree_pine_A2" parent="Trees/Tree Border" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -20.1774, 0.126227, 22.5422)
+
+[node name="tree_pine_A3" parent="Trees/Tree Border" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -20.721, 0.126227, 18.9133)
+
+[node name="tree_pine_A4" parent="Trees/Tree Border" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -20.721, 0.126227, 27.4647)
+
+[node name="tree_pine_A5" parent="Trees/Tree Border" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -21.8245, 0.126227, 12.5747)
+
+[node name="tree_pine_tall_B" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+
+[node name="tree_pine_tall_B2" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.5453, 0.126227, 14.5298)
+
+[node name="tree_pine_tall_B3" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -20.905, 0.126227, 16.7094)
+
+[node name="tree_pine_tall_B4" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.4935, 0.126227, 21.034)
+
+[node name="tree_pine_tall_B5" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -20.6561, 0.126227, 25.0185)
+
+[node name="tree_pine_tall_B16" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -23.0739, 0.126227, 12.5102)
+
+[node name="tree_pine_tall_B17" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -23.556, 0.126227, 16.2296)
+
+[node name="tree_pine_tall_B18" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -22.9157, 0.126227, 18.4092)
+
+[node name="tree_pine_tall_B19" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -23.5042, 0.126227, 22.7338)
+
+[node name="tree_pine_tall_B20" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -22.6668, 0.126227, 26.7183)
+
+[node name="tree_pine_tall_B21" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -24.0085, 0.126227, -6.40464)
+
+[node name="tree_pine_tall_B22" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -23.556, 0.126227, -2.68525)
+
+[node name="tree_pine_tall_B23" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -22.9157, 0.126227, -0.505671)
+
+[node name="tree_pine_tall_B24" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -23.5042, 0.126227, 3.81894)
+
+[node name="tree_pine_tall_B25" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -22.6668, 0.126227, 7.8035)
+
+[node name="tree_pine_tall_B26" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(3.99957, 0, 0.0588504, 0, 4, 0, -0.0588504, 0, 3.99957, -23.5747, 0.126227, -23.1118)
+
+[node name="tree_pine_tall_B27" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(3.99957, 0, 0.0588504, 0, 4, 0, -0.0588504, 0, 3.99957, -24.002, 0.126227, -19.3857)
+
+[node name="tree_pine_tall_B28" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(3.99957, 0, 0.0588504, 0, 4, 0, -0.0588504, 0, 3.99957, -23.3297, 0.126227, -17.2158)
+
+[node name="tree_pine_tall_B29" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(3.99957, 0, 0.0588504, 0, 4, 0, -0.0588504, 0, 3.99957, -23.8545, 0.126227, -12.883)
+
+[node name="tree_pine_tall_B30" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(3.99957, 0, 0.0588504, 0, 4, 0, -0.0588504, 0, 3.99957, -22.9586, 0.126227, -8.91118)
+
+[node name="tree_pine_A6" parent="Trees/Tree Border" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -20.5472, 0.126227, 3.47303)
+
+[node name="tree_pine_A7" parent="Trees/Tree Border" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -21.0909, 0.126227, -0.155871)
+
+[node name="tree_pine_A8" parent="Trees/Tree Border" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -21.0909, 0.126227, 8.39548)
+
+[node name="tree_pine_A9" parent="Trees/Tree Border" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -22.1943, 0.126227, -6.49451)
+
+[node name="tree_pine_tall_B6" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.433, 0.126227, -8.25881)
+
+[node name="tree_pine_tall_B7" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.9151, 0.126227, -4.53942)
+
+[node name="tree_pine_tall_B8" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.2749, 0.126227, -2.35984)
+
+[node name="tree_pine_tall_B9" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.8633, 0.126227, 1.96478)
+
+[node name="tree_pine_tall_B10" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.0259, 0.126227, 5.94933)
+
+[node name="tree_pine_A10" parent="Trees/Tree Border" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -20.5472, 0.126227, -15.2665)
+
+[node name="tree_pine_A11" parent="Trees/Tree Border" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -21.0909, 0.126227, -18.8954)
+
+[node name="tree_pine_A12" parent="Trees/Tree Border" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -21.0909, 0.126227, -10.3441)
+
+[node name="tree_pine_A13" parent="Trees/Tree Border" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -22.1943, 0.126227, -25.2341)
+
+[node name="tree_pine_tall_B11" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.433, 0.126227, -26.9984)
+
+[node name="tree_pine_tall_B12" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.9151, 0.126227, -23.279)
+
+[node name="tree_pine_tall_B13" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.2749, 0.126227, -21.0994)
+
+[node name="tree_pine_tall_B14" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.8633, 0.126227, -16.7748)
+
+[node name="tree_pine_tall_B15" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.0259, 0.126227, -12.7902)
+
+[node name="tree_pine_A14" parent="Trees/Tree Border" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -24.2712, 0.126227, 21.8326)
+
+[node name="tree_pine_A15" parent="Trees/Tree Border" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -25.0779, 0.126227, 18.0788)
+
+[node name="tree_pine_A16" parent="Trees/Tree Border" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -25.0779, 0.126227, 26.9245)
+
+[node name="tree_pine_A17" parent="Trees/Tree Border" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -26.7152, 0.126227, 11.5219)
+
+[node name="tree_pine_tall_B31" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -25.5856, 0.126227, 9.69691)
+
+[node name="tree_pine_tall_B32" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -26.3009, 0.126227, 13.5443)
+
+[node name="tree_pine_tall_B33" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -25.3509, 0.126227, 15.7989)
+
+[node name="tree_pine_tall_B34" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -26.224, 0.126227, 20.2724)
+
+[node name="tree_pine_tall_B35" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -24.9815, 0.126227, 24.3941)
+
+[node name="tree_pine_tall_B36" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -28.569, 0.126227, 11.4552)
+
+[node name="tree_pine_tall_B37" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -29.2843, 0.126227, 15.3027)
+
+[node name="tree_pine_tall_B38" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -28.3343, 0.126227, 17.5573)
+
+[node name="tree_pine_tall_B39" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -29.2074, 0.126227, 22.0307)
+
+[node name="tree_pine_tall_B40" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -27.965, 0.126227, 26.1525)
+
+[node name="tree_pine_tall_B41" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -29.9557, 0.126227, -8.11072)
+
+[node name="tree_pine_tall_B42" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -29.2843, 0.126227, -4.2633)
+
+[node name="tree_pine_tall_B43" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -28.3343, 0.126227, -2.00869)
+
+[node name="tree_pine_tall_B44" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -29.2074, 0.126227, 2.46479)
+
+[node name="tree_pine_tall_B45" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -27.965, 0.126227, 6.5865)
+
+[node name="tree_pine_tall_B46" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93123, 0, 0.0613092, 0, 6.31529, 0, -0.0872732, 0, 4.16668, -29.312, 0.126227, -25.393)
+
+[node name="tree_pine_tall_B47" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93123, 0, 0.0613092, 0, 6.31529, 0, -0.0872732, 0, 4.16668, -29.946, 0.126227, -21.5386)
+
+[node name="tree_pine_tall_B48" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93123, 0, 0.0613092, 0, 6.31529, 0, -0.0872732, 0, 4.16668, -28.9486, 0.126227, -19.294)
+
+[node name="tree_pine_tall_B49" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93123, 0, 0.0613092, 0, 6.31529, 0, -0.0872732, 0, 4.16668, -29.7272, 0.126227, -14.8121)
+
+[node name="tree_pine_tall_B50" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93123, 0, 0.0613092, 0, 6.31529, 0, -0.0872732, 0, 4.16668, -28.3979, 0.126227, -10.7035)
+
+[node name="tree_pine_A18" parent="Trees/Tree Border" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -24.8199, 0.126227, 2.10697)
+
+[node name="tree_pine_A19" parent="Trees/Tree Border" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -25.6266, 0.126227, -1.64685)
+
+[node name="tree_pine_A20" parent="Trees/Tree Border" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -25.6266, 0.126227, 7.19887)
+
+[node name="tree_pine_A21" parent="Trees/Tree Border" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -27.2639, 0.126227, -8.20368)
+
+[node name="tree_pine_tall_B51" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -26.1343, 0.126227, -10.0287)
+
+[node name="tree_pine_tall_B52" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -26.8496, 0.126227, -6.18129)
+
+[node name="tree_pine_tall_B53" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -25.8996, 0.126227, -3.92668)
+
+[node name="tree_pine_tall_B54" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -26.7728, 0.126227, 0.546802)
+
+[node name="tree_pine_tall_B55" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -25.5303, 0.126227, 4.66851)
+
+[node name="tree_pine_A22" parent="Trees/Tree Border" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -24.8199, 0.126227, -17.2777)
+
+[node name="tree_pine_A23" parent="Trees/Tree Border" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -25.6266, 0.126227, -21.0315)
+
+[node name="tree_pine_A24" parent="Trees/Tree Border" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -25.6266, 0.126227, -12.1858)
+
+[node name="tree_pine_A25" parent="Trees/Tree Border" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -27.2639, 0.126227, -27.5883)
+
+[node name="tree_pine_tall_B56" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -26.1343, 0.126227, -29.4133)
+
+[node name="tree_pine_tall_B57" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -26.8496, 0.126227, -25.5659)
+
+[node name="tree_pine_tall_B58" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -25.8996, 0.126227, -23.3113)
+
+[node name="tree_pine_tall_B59" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -26.7728, 0.126227, -18.8378)
+
+[node name="tree_pine_tall_B60" parent="Trees/Tree Border" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -25.5303, 0.126227, -14.7161)
+
+[node name="Tree Border2" type="Node3D" parent="Trees"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 4.38383)
+
+[node name="tree_pine_A2" parent="Trees/Tree Border2" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -20.1774, 0.126227, 22.5422)
+
+[node name="tree_pine_A3" parent="Trees/Tree Border2" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -20.721, 0.126227, 18.9133)
+
+[node name="tree_pine_A4" parent="Trees/Tree Border2" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -20.721, 0.126227, 27.4647)
+
+[node name="tree_pine_tall_B" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+
+[node name="tree_pine_tall_B4" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.4935, 0.126227, 21.034)
+
+[node name="tree_pine_tall_B5" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -20.6561, 0.126227, 25.0185)
+
+[node name="tree_pine_tall_B18" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -22.9157, 0.126227, 18.4092)
+
+[node name="tree_pine_tall_B19" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -23.5042, 0.126227, 22.7338)
+
+[node name="tree_pine_tall_B20" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -22.6668, 0.126227, 26.7183)
+
+[node name="tree_pine_tall_B21" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -24.0085, 0.126227, -6.40464)
+
+[node name="tree_pine_tall_B22" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -23.556, 0.126227, -2.68525)
+
+[node name="tree_pine_tall_B23" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -22.9157, 0.126227, -0.505671)
+
+[node name="tree_pine_tall_B24" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -23.5042, 0.126227, 3.81894)
+
+[node name="tree_pine_tall_B25" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -22.6668, 0.126227, 7.8035)
+
+[node name="tree_pine_tall_B26" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(3.99957, 0, 0.0588504, 0, 4, 0, -0.0588504, 0, 3.99957, -23.5747, 0.126227, -23.1118)
+
+[node name="tree_pine_tall_B27" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(3.99957, 0, 0.0588504, 0, 4, 0, -0.0588504, 0, 3.99957, -24.002, 0.126227, -19.3857)
+
+[node name="tree_pine_tall_B28" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(3.99957, 0, 0.0588504, 0, 4, 0, -0.0588504, 0, 3.99957, -23.3297, 0.126227, -17.2158)
+
+[node name="tree_pine_tall_B29" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(3.99957, 0, 0.0588504, 0, 4, 0, -0.0588504, 0, 3.99957, -23.8545, 0.126227, -12.883)
+
+[node name="tree_pine_tall_B30" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(3.99957, 0, 0.0588504, 0, 4, 0, -0.0588504, 0, 3.99957, -22.9586, 0.126227, -8.91118)
+
+[node name="tree_pine_A6" parent="Trees/Tree Border2" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -20.5472, 0.126227, 3.47303)
+
+[node name="tree_pine_A7" parent="Trees/Tree Border2" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -21.0909, 0.126227, -0.155871)
+
+[node name="tree_pine_A8" parent="Trees/Tree Border2" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -21.0909, 0.126227, 8.39548)
+
+[node name="tree_pine_A9" parent="Trees/Tree Border2" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -22.1943, 0.126227, -6.49451)
+
+[node name="tree_pine_tall_B6" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.433, 0.126227, -8.25881)
+
+[node name="tree_pine_tall_B7" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.9151, 0.126227, -4.53942)
+
+[node name="tree_pine_tall_B8" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.2749, 0.126227, -2.35984)
+
+[node name="tree_pine_tall_B9" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.8633, 0.126227, 1.96478)
+
+[node name="tree_pine_tall_B10" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.0259, 0.126227, 5.94933)
+
+[node name="tree_pine_A10" parent="Trees/Tree Border2" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -20.5472, 0.126227, -15.2665)
+
+[node name="tree_pine_A11" parent="Trees/Tree Border2" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -21.0909, 0.126227, -18.8954)
+
+[node name="tree_pine_A12" parent="Trees/Tree Border2" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -21.0909, 0.126227, -10.3441)
+
+[node name="tree_pine_A13" parent="Trees/Tree Border2" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -22.1943, 0.126227, -25.2341)
+
+[node name="tree_pine_tall_B11" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.433, 0.126227, -26.9984)
+
+[node name="tree_pine_tall_B12" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.9151, 0.126227, -23.279)
+
+[node name="tree_pine_tall_B13" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.2749, 0.126227, -21.0994)
+
+[node name="tree_pine_tall_B14" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.8633, 0.126227, -16.7748)
+
+[node name="tree_pine_tall_B15" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.0259, 0.126227, -12.7902)
+
+[node name="tree_pine_A14" parent="Trees/Tree Border2" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -24.2712, 0.126227, 21.8326)
+
+[node name="tree_pine_A15" parent="Trees/Tree Border2" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -25.0779, 0.126227, 18.0788)
+
+[node name="tree_pine_A16" parent="Trees/Tree Border2" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -25.0779, 0.126227, 26.9245)
+
+[node name="tree_pine_tall_B31" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -25.5856, 0.126227, 9.69691)
+
+[node name="tree_pine_tall_B33" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -25.3509, 0.126227, 15.7989)
+
+[node name="tree_pine_tall_B34" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -26.224, 0.126227, 20.2724)
+
+[node name="tree_pine_tall_B35" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -24.9815, 0.126227, 24.3941)
+
+[node name="tree_pine_tall_B38" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -28.3343, 0.126227, 17.5573)
+
+[node name="tree_pine_tall_B39" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -29.2074, 0.126227, 22.0307)
+
+[node name="tree_pine_tall_B40" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -27.965, 0.126227, 26.1525)
+
+[node name="tree_pine_tall_B41" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -29.9557, 0.126227, -8.11072)
+
+[node name="tree_pine_tall_B42" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -29.2843, 0.126227, -4.2633)
+
+[node name="tree_pine_tall_B43" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -28.3343, 0.126227, -2.00869)
+
+[node name="tree_pine_tall_B44" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -29.2074, 0.126227, 2.46479)
+
+[node name="tree_pine_tall_B45" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -27.965, 0.126227, 6.5865)
+
+[node name="tree_pine_tall_B46" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93123, 0, 0.0613092, 0, 6.31529, 0, -0.0872732, 0, 4.16668, -29.312, 0.126227, -25.393)
+
+[node name="tree_pine_tall_B47" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93123, 0, 0.0613092, 0, 6.31529, 0, -0.0872732, 0, 4.16668, -29.946, 0.126227, -21.5386)
+
+[node name="tree_pine_tall_B48" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93123, 0, 0.0613092, 0, 6.31529, 0, -0.0872732, 0, 4.16668, -28.9486, 0.126227, -19.294)
+
+[node name="tree_pine_tall_B49" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93123, 0, 0.0613092, 0, 6.31529, 0, -0.0872732, 0, 4.16668, -29.7272, 0.126227, -14.8121)
+
+[node name="tree_pine_tall_B50" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93123, 0, 0.0613092, 0, 6.31529, 0, -0.0872732, 0, 4.16668, -28.3979, 0.126227, -10.7035)
+
+[node name="tree_pine_A18" parent="Trees/Tree Border2" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -24.8199, 0.126227, 2.10697)
+
+[node name="tree_pine_A19" parent="Trees/Tree Border2" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -25.6266, 0.126227, -1.64685)
+
+[node name="tree_pine_A20" parent="Trees/Tree Border2" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -25.6266, 0.126227, 7.19887)
+
+[node name="tree_pine_A21" parent="Trees/Tree Border2" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -27.2639, 0.126227, -8.20368)
+
+[node name="tree_pine_tall_B51" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -26.1343, 0.126227, -10.0287)
+
+[node name="tree_pine_tall_B52" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -26.8496, 0.126227, -6.18129)
+
+[node name="tree_pine_tall_B53" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -25.8996, 0.126227, -3.92668)
+
+[node name="tree_pine_tall_B54" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -26.7728, 0.126227, 0.546802)
+
+[node name="tree_pine_tall_B55" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -25.5303, 0.126227, 4.66851)
+
+[node name="tree_pine_A22" parent="Trees/Tree Border2" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -24.8199, 0.126227, -17.2777)
+
+[node name="tree_pine_A23" parent="Trees/Tree Border2" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -25.6266, 0.126227, -21.0315)
+
+[node name="tree_pine_A24" parent="Trees/Tree Border2" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -25.6266, 0.126227, -12.1858)
+
+[node name="tree_pine_A25" parent="Trees/Tree Border2" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -27.2639, 0.126227, -27.5883)
+
+[node name="tree_pine_tall_B56" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -26.1343, 0.126227, -29.4133)
+
+[node name="tree_pine_tall_B57" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -26.8496, 0.126227, -25.5659)
+
+[node name="tree_pine_tall_B58" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -25.8996, 0.126227, -23.3113)
+
+[node name="tree_pine_tall_B59" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -26.7728, 0.126227, -18.8378)
+
+[node name="tree_pine_tall_B60" parent="Trees/Tree Border2" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -25.5303, 0.126227, -14.7161)
+
+[node name="Tree Border3" type="Node3D" parent="Trees"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1.99967)
+
+[node name="tree_pine_A2" parent="Trees/Tree Border3" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -20.1774, 0.126227, 22.5422)
+
+[node name="tree_pine_A3" parent="Trees/Tree Border3" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -20.721, 0.126227, 18.9133)
+
+[node name="tree_pine_A4" parent="Trees/Tree Border3" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -20.721, 0.126227, 27.4647)
+
+[node name="tree_pine_A5" parent="Trees/Tree Border3" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -21.8245, 0.126227, 12.5747)
+
+[node name="tree_pine_tall_B" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+
+[node name="tree_pine_tall_B2" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.5453, 0.126227, 14.5298)
+
+[node name="tree_pine_tall_B3" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -20.905, 0.126227, 16.7094)
+
+[node name="tree_pine_tall_B4" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.4935, 0.126227, 21.034)
+
+[node name="tree_pine_tall_B5" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -20.6561, 0.126227, 25.0185)
+
+[node name="tree_pine_tall_B16" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -23.0739, 0.126227, 12.5102)
+
+[node name="tree_pine_tall_B17" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -23.556, 0.126227, 16.2296)
+
+[node name="tree_pine_tall_B18" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -22.9157, 0.126227, 18.4092)
+
+[node name="tree_pine_tall_B19" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -23.5042, 0.126227, 22.7338)
+
+[node name="tree_pine_tall_B20" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -22.6668, 0.126227, 26.7183)
+
+[node name="tree_pine_tall_B21" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -24.0085, 0.126227, -6.40464)
+
+[node name="tree_pine_tall_B22" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -23.556, 0.126227, -2.68525)
+
+[node name="tree_pine_tall_B23" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -22.9157, 0.126227, -0.505671)
+
+[node name="tree_pine_tall_B24" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -23.5042, 0.126227, 3.81894)
+
+[node name="tree_pine_tall_B25" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -22.6668, 0.126227, 7.8035)
+
+[node name="tree_pine_tall_B26" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(3.99957, 0, 0.0588504, 0, 4, 0, -0.0588504, 0, 3.99957, -23.5747, 0.126227, -23.1118)
+
+[node name="tree_pine_tall_B27" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(3.99957, 0, 0.0588504, 0, 4, 0, -0.0588504, 0, 3.99957, -24.002, 0.126227, -19.3857)
+
+[node name="tree_pine_tall_B28" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(3.99957, 0, 0.0588504, 0, 4, 0, -0.0588504, 0, 3.99957, -23.3297, 0.126227, -17.2158)
+
+[node name="tree_pine_tall_B29" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(3.99957, 0, 0.0588504, 0, 4, 0, -0.0588504, 0, 3.99957, -23.8545, 0.126227, -12.883)
+
+[node name="tree_pine_tall_B30" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(3.99957, 0, 0.0588504, 0, 4, 0, -0.0588504, 0, 3.99957, -22.9586, 0.126227, -8.91118)
+
+[node name="tree_pine_A6" parent="Trees/Tree Border3" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -20.5472, 0.126227, 3.47303)
+
+[node name="tree_pine_A7" parent="Trees/Tree Border3" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -21.0909, 0.126227, -0.155871)
+
+[node name="tree_pine_A8" parent="Trees/Tree Border3" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -21.0909, 0.126227, 8.39548)
+
+[node name="tree_pine_A9" parent="Trees/Tree Border3" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -22.1943, 0.126227, -6.49451)
+
+[node name="tree_pine_tall_B6" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.433, 0.126227, -8.25881)
+
+[node name="tree_pine_tall_B7" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.9151, 0.126227, -4.53942)
+
+[node name="tree_pine_tall_B8" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.2749, 0.126227, -2.35984)
+
+[node name="tree_pine_tall_B9" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.8633, 0.126227, 1.96478)
+
+[node name="tree_pine_tall_B10" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.0259, 0.126227, 5.94933)
+
+[node name="tree_pine_A11" parent="Trees/Tree Border3" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -21.0909, 0.126227, -18.8954)
+
+[node name="tree_pine_A12" parent="Trees/Tree Border3" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -21.0909, 0.126227, -10.3441)
+
+[node name="tree_pine_A13" parent="Trees/Tree Border3" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(3.55955, 0, -1.82473, 0, 4, 0, 1.82473, 0, 3.55955, -22.1943, 0.126227, -25.2341)
+
+[node name="tree_pine_tall_B11" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.433, 0.126227, -26.9984)
+
+[node name="tree_pine_tall_B12" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.9151, 0.126227, -23.279)
+
+[node name="tree_pine_tall_B13" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.2749, 0.126227, -21.0994)
+
+[node name="tree_pine_tall_B14" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.8633, 0.126227, -16.7748)
+
+[node name="tree_pine_tall_B15" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -21.0259, 0.126227, -12.7902)
+
+[node name="tree_pine_A14" parent="Trees/Tree Border3" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -24.2712, 0.126227, 21.8326)
+
+[node name="tree_pine_A15" parent="Trees/Tree Border3" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -25.0779, 0.126227, 18.0788)
+
+[node name="tree_pine_A16" parent="Trees/Tree Border3" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -25.0779, 0.126227, 26.9245)
+
+[node name="tree_pine_A17" parent="Trees/Tree Border3" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -26.7152, 0.126227, 11.5219)
+
+[node name="tree_pine_tall_B31" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -25.5856, 0.126227, 9.69691)
+
+[node name="tree_pine_tall_B32" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -26.3009, 0.126227, 13.5443)
+
+[node name="tree_pine_tall_B33" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -25.3509, 0.126227, 15.7989)
+
+[node name="tree_pine_tall_B34" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -26.224, 0.126227, 20.2724)
+
+[node name="tree_pine_tall_B35" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -24.9815, 0.126227, 24.3941)
+
+[node name="tree_pine_tall_B36" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -28.569, 0.126227, 11.4552)
+
+[node name="tree_pine_tall_B37" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -29.2843, 0.126227, 15.3027)
+
+[node name="tree_pine_tall_B38" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -28.3343, 0.126227, 17.5573)
+
+[node name="tree_pine_tall_B39" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -29.2074, 0.126227, 22.0307)
+
+[node name="tree_pine_tall_B40" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -27.965, 0.126227, 26.1525)
+
+[node name="tree_pine_tall_B41" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -29.9557, 0.126227, -8.11072)
+
+[node name="tree_pine_tall_B42" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -29.2843, 0.126227, -4.2633)
+
+[node name="tree_pine_tall_B43" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -28.3343, 0.126227, -2.00869)
+
+[node name="tree_pine_tall_B44" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -29.2074, 0.126227, 2.46479)
+
+[node name="tree_pine_tall_B45" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -27.965, 0.126227, 6.5865)
+
+[node name="tree_pine_tall_B46" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93123, 0, 0.0613092, 0, 6.31529, 0, -0.0872732, 0, 4.16668, -29.312, 0.126227, -25.393)
+
+[node name="tree_pine_tall_B47" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93123, 0, 0.0613092, 0, 6.31529, 0, -0.0872732, 0, 4.16668, -29.946, 0.126227, -21.5386)
+
+[node name="tree_pine_tall_B48" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93123, 0, 0.0613092, 0, 6.31529, 0, -0.0872732, 0, 4.16668, -28.9486, 0.126227, -19.294)
+
+[node name="tree_pine_tall_B49" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93123, 0, 0.0613092, 0, 6.31529, 0, -0.0872732, 0, 4.16668, -29.7272, 0.126227, -14.8121)
+
+[node name="tree_pine_tall_B50" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93123, 0, 0.0613092, 0, 6.31529, 0, -0.0872732, 0, 4.16668, -28.3979, 0.126227, -10.7035)
+
+[node name="tree_pine_A18" parent="Trees/Tree Border3" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -24.8199, 0.126227, 2.10697)
+
+[node name="tree_pine_A19" parent="Trees/Tree Border3" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -25.6266, 0.126227, -1.64685)
+
+[node name="tree_pine_A20" parent="Trees/Tree Border3" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -25.6266, 0.126227, 7.19887)
+
+[node name="tree_pine_A21" parent="Trees/Tree Border3" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -27.2639, 0.126227, -8.20368)
+
+[node name="tree_pine_tall_B51" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -26.1343, 0.126227, -10.0287)
+
+[node name="tree_pine_tall_B52" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -26.8496, 0.126227, -6.18129)
+
+[node name="tree_pine_tall_B53" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -25.8996, 0.126227, -3.92668)
+
+[node name="tree_pine_tall_B54" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -26.7728, 0.126227, 0.546802)
+
+[node name="tree_pine_tall_B55" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -25.5303, 0.126227, 4.66851)
+
+[node name="tree_pine_A22" parent="Trees/Tree Border3" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -24.8199, 0.126227, -17.2777)
+
+[node name="tree_pine_A23" parent="Trees/Tree Border3" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -25.6266, 0.126227, -21.0315)
+
+[node name="tree_pine_A24" parent="Trees/Tree Border3" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -25.6266, 0.126227, -12.1858)
+
+[node name="tree_pine_A25" parent="Trees/Tree Border3" instance=ExtResource("6_lv4xk")]
+transform = Transform3D(5.1719, 0, -1.46559, 0, 6.31529, 0, 2.65126, 0, 2.85897, -27.2639, 0.126227, -27.5883)
+
+[node name="tree_pine_tall_B56" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -26.1343, 0.126227, -29.4133)
+
+[node name="tree_pine_tall_B57" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -26.8496, 0.126227, -25.5659)
+
+[node name="tree_pine_tall_B58" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -25.8996, 0.126227, -23.3113)
+
+[node name="tree_pine_tall_B59" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -26.7728, 0.126227, -18.8378)
+
+[node name="tree_pine_tall_B60" parent="Trees/Tree Border3" instance=ExtResource("9_01alu")]
+transform = Transform3D(5.93508, 0, 0, 0, 6.31529, 0, 0, 0, 4.13769, -25.5303, 0.126227, -14.7161)
+
+[node name="sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.788902, -0.206757, 0.578693, 0, 0.9417, 0.336454, -0.614519, -0.265429, 0.742909, 0, 8.13749, 4.48024)
+light_color = Color(0.823529, 0.909804, 1, 1)
+light_angular_distance = 0.5
+shadow_enabled = true
+shadow_opacity = 0.84
+shadow_blur = 2.424
+directional_shadow_mode = 0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_88qq8")
+
+[node name="Invisible Walls" type="Node3D" parent="."]
+
+[node name="Invisible Wall" type="StaticBody3D" parent="Invisible Walls"]
+transform = Transform3D(41.3675, 0, 0, 0, 6.84044, 0, 0, 0, 9.07781, -10.8193, 3.53958, 26.9032)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Invisible Walls/Invisible Wall"]
+shape = SubResource("BoxShape3D_v35e6")
+
+[node name="Invisible Wall2" type="StaticBody3D" parent="Invisible Walls"]
+transform = Transform3D(13.2, 0, 0, 0, 6.84044, 0, 0, 0, 9.07781, 25.3422, 3.53958, 26.9032)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Invisible Walls/Invisible Wall2"]
+shape = SubResource("BoxShape3D_v35e6")
+
+[node name="Invisible Wall3" type="StaticBody3D" parent="Invisible Walls"]
+transform = Transform3D(10.5974, 0, 0, 0, 6.84044, 0, 0, 0, 55.6983, 26.1123, 3.53958, 1.06675)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Invisible Walls/Invisible Wall3"]
+shape = SubResource("BoxShape3D_v35e6")
+
+[node name="Invisible Wall4" type="StaticBody3D" parent="Invisible Walls"]
+transform = Transform3D(10.5974, 0, 0, 0, 6.84044, 0, 0, 0, 55.6983, -26.7027, 3.53958, 1.06675)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Invisible Walls/Invisible Wall4"]
+shape = SubResource("BoxShape3D_v35e6")

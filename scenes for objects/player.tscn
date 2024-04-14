@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvqvocl8sq51"]
+[gd_scene load_steps=6 format=3 uid="uid://dvqvocl8sq51"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_6midp"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_p1stf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dv14e"]
 radius = 0.519053
@@ -25,4 +26,7 @@ mesh = SubResource("CapsuleMesh_0t67e")
 [node name="Its 1 from the numberjacks!!!!" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.654517, 0.756048, 0, -0.756048, 0.654517, -0.166022, 8.32791, 6.506)
+transform = Transform3D(1, 0, 0, 0, 0.654517, 0.756048, 0, -0.756048, 0.654517, 2072.19, 10316.5, 6685.73)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+script = ExtResource("2_p1stf")
