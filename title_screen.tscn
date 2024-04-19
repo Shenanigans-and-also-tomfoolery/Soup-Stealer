@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ckqeqg6w0kc6u"]
+[gd_scene load_steps=27 format=3 uid="uid://ckqeqg6w0kc6u"]
 
 [ext_resource type="Script" path="res://title_screen.gd" id="1_7hjyh"]
 [ext_resource type="FontFile" uid="uid://cgyf1hw3onyps" path="res://Fonts/Pineapple Apple Font.ttf" id="2_xigsd"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://pgi4t8kxcxtt" path="res://Music/Big Ol Milk Bag.mp3" id="13_pswdb"]
 [ext_resource type="Shader" path="res://addons/simplegrasstextured/shaders/grass.gdshader" id="14_a55ug"]
 [ext_resource type="FontFile" uid="uid://c4mm3of2mc8o5" path="res://addons/phantom_camera/fonts/Nunito-Black.ttf" id="14_aualm"]
+[ext_resource type="Texture2D" uid="uid://p7qmrd1g5vcd" path="res://Images/soup_title_screen.png" id="15_3e7rb"]
 [ext_resource type="Texture2D" uid="uid://c4ggdp0kg5wjk" path="res://addons/simplegrasstextured/textures/grassbushcc008.png" id="15_ud2bo"]
 [ext_resource type="Script" path="res://addons/simplegrasstextured/grass.gd" id="16_3fbew"]
 
@@ -21,7 +22,7 @@ albedo = Color(0, 0, 0, 1)
 emission = Color(0.819608, 0.858824, 0.917647, 1)
 edge_fade = 0.127457
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8h3sr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7vuro"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("14_a55ug")
@@ -56,7 +57,7 @@ _surfaces = [{
 "format": 34359742495,
 "index_count": 12,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 3, 0, 1, 0, 0, 0, 4, 0, 5, 0, 6, 0, 7, 0, 5, 0, 4, 0),
-"material": SubResource("ShaderMaterial_8h3sr"),
+"material": SubResource("ShaderMaterial_7vuro"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
@@ -77,7 +78,7 @@ shader_parameter/lod = 1.0
 
 [sub_resource type="Animation" id="Animation_jralw"]
 resource_name = "Fade_In_Title"
-length = 4.0
+length = 6.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -85,7 +86,7 @@ tracks/0/path = NodePath(".:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.8, 1.9, 4),
+"times": PackedFloat32Array(0.8, 2.4, 4),
 "transitions": PackedFloat32Array(3.36359, 1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
@@ -113,6 +114,28 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Presents:theme_override_colors/font_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4, 1.3, 2.4),
+"transitions": PackedFloat32Array(1, 5.85633, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+tracks/4/type = "animation"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Title Animations (not intro)")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": PackedStringArray("buttons and stuff"),
+"times": PackedFloat32Array(3.7)
 }
 
 [sub_resource type="Animation" id="Animation_241rp"]
@@ -146,6 +169,39 @@ tracks/1/keys = {
 _data = {
 "Fade_In_Title": SubResource("Animation_jralw"),
 "RESET": SubResource("Animation_241rp")
+}
+
+[sub_resource type="Animation" id="Animation_7snes"]
+resource_name = "buttons and stuff"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NewButton:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.7),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(-66, 150), Vector2(39, 150)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Options:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector2(-65, 173), Vector2(40, 173)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m8ur3"]
+_data = {
+"buttons and stuff": SubResource("Animation_7snes")
 }
 
 [node name="Node3D" type="Node3D"]
@@ -778,29 +834,39 @@ offset_bottom = 40.0
 scale = Vector2(17.08, 9.44)
 color = Color(0, 0, 0, 0.396078)
 
+[node name="TextureRect" type="TextureRect" parent="TitleWorld/Control"]
+layout_mode = 0
+offset_right = 10100.0
+offset_bottom = 5425.0
+scale = Vector2(0.0399995, 0.0399995)
+texture = ExtResource("15_3e7rb")
+
 [node name="Label" type="Label" parent="TitleWorld/Control"]
 layout_mode = 0
-offset_left = 39.0
-offset_top = 16.0
-offset_right = 347.0
-offset_bottom = 76.0
+offset_left = 267.0
+offset_top = 109.0
+offset_right = 925.0
+offset_bottom = 169.0
+rotation = 0.66633
+scale = Vector2(0.16946, 0.16946)
 theme_override_fonts/font = ExtResource("2_xigsd")
 theme_override_font_sizes/font_size = 60
-text = "Soup Stealer"
+text = "Idk how to fix the flickering"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="TitleWorld/Control"]
 layout_mode = 0
 offset_left = 39.0
-offset_top = 58.0
-offset_right = 347.0
-offset_bottom = 118.0
+offset_top = 62.0
+offset_right = 198.0
+offset_bottom = 122.0
 theme_override_fonts/font = ExtResource("2_xigsd")
 theme_override_font_sizes/font_size = 10
-text = "Why is the background a forest?
-idk either"
+text = "Fun fact:
+there's a whole world rendered beneath this title screen. Don't you love wasting rescources?"
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Label3" type="Label" parent="TitleWorld/Control"]
 layout_mode = 0
@@ -811,7 +877,7 @@ offset_bottom = 237.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_xigsd")
 theme_override_font_sizes/font_size = 10
-text = "Low quality title screen v1"
+text = "Low quality title screen v2"
 vertical_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TitleWorld/Control"]
@@ -819,26 +885,26 @@ stream = ExtResource("13_pswdb")
 
 [node name="NewButton" type="Button" parent="TitleWorld/Control"]
 layout_mode = 0
-offset_left = 39.0
-offset_top = 120.0
-offset_right = 80.0
-offset_bottom = 151.0
-scale = Vector2(1.04, 1)
+offset_left = -66.0
+offset_top = 150.0
+offset_right = -23.0
+offset_bottom = 181.0
+scale = Vector2(0.639999, 0.615384)
 theme_override_fonts/font = ExtResource("14_aualm")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ehuvj")
 text = "New"
 
-[node name="ContinueButton" type="Button" parent="TitleWorld/Control"]
+[node name="Options" type="Button" parent="TitleWorld/Control"]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 158.0
-offset_right = 119.0
-offset_bottom = 189.0
-scale = Vector2(1.12, 1)
+offset_left = -65.0
+offset_top = 173.0
+offset_right = 14.0
+offset_bottom = 204.0
+scale = Vector2(0.599999, 0.535714)
 theme_override_fonts/font = ExtResource("14_aualm")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ehuvj")
-disabled = true
-text = "Continue"
+text = "Options
+"
 
 [node name="ColorRect3" type="ColorRect" parent="TitleWorld/Control"]
 layout_mode = 0
@@ -853,6 +919,21 @@ color = Color(0, 0, 0, 0)
 root_node = NodePath("../../ColorRect3")
 libraries = {
 "": SubResource("AnimationLibrary_8a25s")
+}
+
+[node name="Presents" type="Label" parent="TitleWorld/Control/ColorRect3"]
+layout_mode = 0
+offset_left = 7.66979
+offset_top = 9.95763
+offset_right = 132.67
+offset_bottom = 32.9576
+scale = Vector2(0.0550141, 0.104494)
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+text = "presents to you:"
+
+[node name="Title Animations (not intro)" type="AnimationPlayer" parent="TitleWorld/Control"]
+libraries = {
+"": SubResource("AnimationLibrary_m8ur3")
 }
 
 [connection signal="pressed" from="TitleWorld/Control/NewButton" to="TitleWorld/Control" method="_on_new_button_pressed"]

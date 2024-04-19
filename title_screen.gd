@@ -36,5 +36,5 @@ func _on_new_button_pressed(): #I named this before making it fancy srry
 		print("Created save data @ ", save_path)
 	else:
 		#load save_data
-		#we dont have any data to load so its blank lmaao
+		#we dont have any data to load so its blank lmao
 		pass

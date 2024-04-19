@@ -227,7 +227,7 @@ shadow_mesh = SubResource("ArrayMesh_ecal8")
 height = 4.39427
 radius = 0.726051
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n1jb8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jsn55"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("13_54a8y")
@@ -262,7 +262,7 @@ _surfaces = [{
 "format": 34359742495,
 "index_count": 12,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 3, 0, 1, 0, 0, 0, 4, 0, 5, 0, 6, 0, 7, 0, 5, 0, 4, 0),
-"material": SubResource("ShaderMaterial_n1jb8"),
+"material": SubResource("ShaderMaterial_jsn55"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
