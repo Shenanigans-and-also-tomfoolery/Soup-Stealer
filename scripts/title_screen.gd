@@ -63,3 +63,8 @@ func load_save_data():
 			print("Loading other levels")
 		pass
 		
+
+
+func _on_options_pressed():
+	get_node("OptionsMenu/AnimationPlayer").play("options")
+	pass # Replace with function body.
