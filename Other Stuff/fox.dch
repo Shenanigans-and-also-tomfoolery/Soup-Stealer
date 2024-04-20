@@ -1,0 +1,30 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+"_translation_id": "",
+"color": Color(1, 1, 1, 1),
+"custom_info": {
+"sound_mood_default": "",
+"sound_moods": {
+"Mood 1": {
+"mode": 0,
+"name": "Mood 1",
+"pitch_base": 1.0,
+"pitch_variance": 0.0,
+"skip_characters": 5.0,
+"sound_path": "res://addons/dialogic/Example Assets/sound-effects/typing3.wav",
+"volume_base": 1.2,
+"volume_variance": 0.0
+}
+},
+"style": "bubble_dialog_style"
+},
+"default_portrait": "",
+"description": "",
+"display_name": "Fox",
+"mirror": false,
+"nicknames": [""],
+"offset": Vector2(0, 0),
+"portraits": {},
+"scale": 1.0
+}

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://4d43by5khlek"]
 
 [ext_resource type="Texture2D" uid="uid://dqedloy04o2qr" path="res://Images/tempy logo.png" id="1_7f4lt"]
-[ext_resource type="Script" path="res://boot_screen.gd" id="1_lwjmd"]
+[ext_resource type="Script" path="res://important scenes/boot_screen.gd" id="1_lwjmd"]
 
 [sub_resource type="Animation" id="Animation_6kvbo"]
 length = 0.001

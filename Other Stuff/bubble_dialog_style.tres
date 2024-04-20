@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=8 format=3 uid="uid://ds0d7ult2f36m"]
+
+[ext_resource type="PackedScene" uid="uid://syki6k0e6aac" path="res://addons/dialogic/Modules/DefaultLayoutParts/Base_TextBubble/text_bubble_base.tscn" id="1_s87k5"]
+[ext_resource type="PackedScene" uid="uid://cn674foxwedqu" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.tscn" id="2_skqwt"]
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="3_lpu0h"]
+[ext_resource type="PackedScene" uid="uid://d2it0xiap3gnt" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Textbubble/text_bubble_layer.tscn" id="4_3qlkd"]
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style.gd" id="5_ej8hi"]
+
+[sub_resource type="Resource" id="Resource_t8hiu"]
+script = ExtResource("3_lpu0h")
+scene = ExtResource("2_skqwt")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_m0ahn"]
+script = ExtResource("3_lpu0h")
+scene = ExtResource("4_3qlkd")
+overrides = {
+"box_corner_radius": "10.0",
+"box_modulate_by_character_color": "true",
+"box_padding": "Vector2(8, 8)",
+"name_label_box_modulate": "Color(1, 1, 1, 0)",
+"name_label_color": "Color(1, 0.372549, 0.0980392, 0)",
+"name_label_font_size": "16.0",
+"name_label_use_character_color": "false",
+"text_size": "10.0"
+}
+
+[resource]
+script = ExtResource("5_ej8hi")
+name = "bubble_dialog_style"
+base_scene = ExtResource("1_s87k5")
+base_overrides = {}
+layers = Array[ExtResource("3_lpu0h")]([SubResource("Resource_t8hiu"), SubResource("Resource_m0ahn")])
+metadata/_latest_layer = 1
