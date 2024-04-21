@@ -1,0 +1,6 @@
+fox: You see that?
+fox: That's the soup shack.
+fox: Every 5 years they restock the most luxurious kind of soup
+fox: And since we don't have any money, I thought we could go and STEAL SOME
+fox: Be careful, though - don't get caught! I'll meet you at the back.
+[signal arg="seen_the_shop"]

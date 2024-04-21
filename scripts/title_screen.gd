@@ -60,11 +60,11 @@ func load_save_data():
 			print("Loading lvl 2")
 		else:
 			#load other levels
-			print("Loading other levels")
+			print("Loading other level(s)")
 		pass
 		
 
 
 func _on_options_pressed():
-	get_node("OptionsMenu/AnimationPlayer").play("options")
+	get_node("OptionsMenu/AnimationPlayer").play("options") #play the opening options animation - the close anim is located in the actual options
 	pass # Replace with function body.
