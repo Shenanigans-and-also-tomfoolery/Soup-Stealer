@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://br2o06s0i6nfq"]
+[gd_scene load_steps=64 format=3 uid="uid://br2o06s0i6nfq"]
 
 [ext_resource type="PackedScene" uid="uid://6dx48x5xhhea" path="res://scenes for objects/wall.tscn" id="1_v8pd1"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="1_wmqxw"]
@@ -26,13 +26,9 @@
 
 [sub_resource type="Resource" id="Resource_vjjhi"]
 script = ExtResource("2_osfkk")
-duration = 1.0
-transition = 4
+duration = 2.0
+transition = 5
 ease = 2
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dv14e"]
-radius = 0.519053
-height = 2.60872
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r7v5a"]
 albedo_color = Color(0.960784, 0.45098, 1, 1)
@@ -2597,7 +2593,7 @@ shadow_mesh = SubResource("ArrayMesh_ecal8")
 height = 4.39427
 radius = 0.726051
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_031qe"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_erfac"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("13_54a8y")
@@ -2632,7 +2628,7 @@ _surfaces = [{
 "format": 34359742495,
 "index_count": 12,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 3, 0, 1, 0, 0, 0, 4, 0, 5, 0, 6, 0, 7, 0, 5, 0, 4, 0),
-"material": SubResource("ShaderMaterial_031qe"),
+"material": SubResource("ShaderMaterial_erfac"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
@@ -2718,7 +2714,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-10.2775, 1.97629, 45.8782)]
+"values": [Vector3(-10.2515, 1.15048, 48.5817)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -2731,6 +2727,30 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Cutscene Camera:priority")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Cutscene Camera:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-10.7927, 6.81082, 51.7165)]
 }
 
 [sub_resource type="Animation" id="Animation_4t0ja"]
@@ -2853,10 +2873,10 @@ tracks/9/path = NodePath("fakeBeanos:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(4.3),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": []
+"values": [true]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -2870,20 +2890,219 @@ tracks/10/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Cutscene Camera:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.3, 1.7),
+"transitions": PackedFloat32Array(0.31864, 1),
+"update": 0,
+"values": [Vector3(-9.41617, 4.99895, 36.2212), Vector3(-10.7927, 2.24716, 51.7165)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Cutscene Camera:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.3, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.290702, -0.0603709, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Cutscene Camera:priority")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("fakeBeanos:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.21569, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_imxiq"]
+resource_name = "see_the_shop"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fakeBeanos:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(14.1618, 0.873881, 35.4698)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fakeBeanos:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("fakeBeanos:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2.65465, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("beanos:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("fakeBeanos:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cutscene Camera:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.9, 2.4, 5),
+"transitions": PackedFloat32Array(0.392292, 0.307786, 0.329877, 1),
+"update": 0,
+"values": [Vector3(15.6725, 3.03933, 37.0265), Vector3(15.6725, 3.03933, 2.53802), Vector3(15.6725, 3.03933, 2.53802), Vector3(2.58985, 3.03933, 2.53802)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cutscene Camera:priority")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Fox")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"see_the_shop"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_benxs"]
+resource_name = "cam_normal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cutscene Camera:priority")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fakeBeanos:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("beanos:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_14h78"]
 _data = {
 "TutorialPt1": SubResource("Animation_nw7ms"),
-"day_one": SubResource("Animation_4t0ja")
+"cam_normal": SubResource("Animation_benxs"),
+"day_one": SubResource("Animation_4t0ja"),
+"see_the_shop": SubResource("Animation_imxiq")
 }
+
+[sub_resource type="Resource" id="Resource_836et"]
+script = ExtResource("2_osfkk")
+duration = 1.0
+transition = 1
+ease = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yjox3"]
 
 [node name="Lvl1" type="Node3D"]
 
 [node name="MainFollow Camera" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.796889, 0.604126, 0, -0.604126, 0.796889, -10.2775, 6.58042, 50.6751)
+transform = Transform3D(1, 0, 0, 0, 0.796889, 0.604126, 0, -0.604126, 0.796889, -10.2515, 5.75461, 53.3786)
 script = ExtResource("1_wmqxw")
 priority_override = false
-priority = 0
+priority = 1
 follow_mode = 6
 follow_target = NodePath("../beanos")
 follow_parameters/spring_arm/spring_length = 1.0
@@ -2912,17 +3131,14 @@ transform = Transform3D(-3.82475e-08, 0, 1.98555, 0, 8.22463, 0, -0.875, 0, -8.6
 transform = Transform3D(53.5023, 0, 0, 0, 0.253358, 0, 0, 0, 2.33979, 2.72964, 0.0117159, -22.2615)
 
 [node name="beanos" parent="." instance=ExtResource("2_ruulc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2775, 1.97629, 45.8782)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2515, 1.15048, 48.5817)
+visible = false
 script = ExtResource("5_4npes")
+not_exited_campsite = false
 
 [node name="fakeBeanos" type="CharacterBody3D" parent="."]
-transform = Transform3D(0.347688, 0, 0.93761, 0, 1, 0, -0.93761, 0, 0.347688, -13.2911, 1.0496, 45.5574)
-visible = false
+transform = Transform3D(-0.883765, 0, -0.46793, 0, 1, 0, 0.46793, 0, -0.883765, 14.1618, 0.873881, 35.4698)
 script = ExtResource("5_38vie")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="fakeBeanos"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.471195, 0)
-shape = SubResource("CapsuleShape3D_dv14e")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="fakeBeanos"]
 visible = false
@@ -4470,7 +4686,7 @@ offset_left = 148.0
 offset_top = 44.0
 offset_right = 262.0
 offset_bottom = 61.0
-theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_colors/font_color = Color(1, 1, 1, 0)
 theme_override_fonts/font = ExtResource("17_cuhh0")
 theme_override_font_sizes/font_size = 20
 text = "WASD to move"
@@ -4490,12 +4706,21 @@ mix_target = 1
 stream = ExtResource("21_x2eyp")
 
 [node name="Cutscene Camera" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6725, 3.03933, 2.53802)
 script = ExtResource("1_wmqxw")
 priority_override = false
-priority = 0
+priority = 1
 follow_mode = 0
 look_at_mode = 0
-tween_parameters = null
+tween_parameters = SubResource("Resource_836et")
 tween_on_load = true
 inactive_update_mode = 0
 camera_3D_resource = null
+
+[node name="Area detectore" type="Area3D" parent="."]
+transform = Transform3D(5.33752, 0, 0, 0, 4.30458, 0, 0, 0, 6.35853, 10.3006, 3.71654, 35.1444)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area detectore"]
+shape = SubResource("BoxShape3D_yjox3")
+
+[connection signal="body_entered" from="Area detectore" to="Cutscenes" method="_on_campsite_exit_area_body_entered"]

@@ -5,6 +5,8 @@ const SPRINT_SPEED = 10.0
 const JUMP_VELOCITY = 4.5
 var is_sprinting = false
 
+@export var not_exited_campsite = false
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
