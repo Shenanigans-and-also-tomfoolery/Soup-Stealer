@@ -34,6 +34,7 @@ func _on_new_button_pressed(): #I named this before making it fancy srry
 		file.store_line("Pls don't cheat :))))") #Saves this line
 		file.READ
 		print("Created save data @ ", save_path)
+		get_tree().change_scene_to_file("res://level scenes/lvl1.tscn")
 	else:
 		#load save_data
 		#we dont have any data to load so its blank lmao
